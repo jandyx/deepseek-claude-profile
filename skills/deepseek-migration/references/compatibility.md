@@ -167,6 +167,7 @@ the Anthropic shape. That is cosmetic; do not chase it.
 | API returns 200 but content is empty | A `thinking` block consumed the whole `max_tokens` budget before any text block | Raise `max_tokens`. Reasoning builds emit `thinking` first; 16 tokens is nowhere near enough |
 | Startup prints `[claude-code:unrecognized_model]` | Claude Code does not recognise a third-party model id | Cosmetic. Ignore it, or silence it by pinning a `claude-*` name and letting DeepSeek map it |
 | Reported session cost looks absurd (e.g. $0.14 for one short turn) | Claude Code prices unknown models against an Anthropic table; `costBasis` comes back `unknown` | Treat cost and HUD spend numbers as fiction on this profile. Use the DeepSeek platform console for real billing |
+| Assistant output is replaced by a plugin notice ("Memory capture paused…", quota warnings) | A plugin's `UserPromptSubmit` hook injects text and the model echoes it | Not a migration bug — it happens on the source profile too. Disable that plugin in the profile, or instruct the model to ignore system notices |
 | Repo's own hooks/settings not loading | `--setting-sources user` is intentional | `dsd --setting-sources user,project,local` for trusted repos |
 | Profile settings get overwritten mid-session | A running session rewrote `.claude.json` | Re-run `merge-ccd-config.py`; it is idempotent and designed for this |
 
