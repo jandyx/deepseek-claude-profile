@@ -1,0 +1,18 @@
+# Credentials — must never be committed
+api-key
+profile.env
+*.key
+*.pem
+.env
+.env.*
+
+# Local profile state
+claude/
+!skills/deepseek-migration/
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
